@@ -13,7 +13,7 @@ package object coperque {
 
   private[coperque] trait PoppableLike[+A, +Repr[_] <: Poppable[_]] {
     self: Repr[_] =>
-    def pop[B >: A]: Repr[B]
+    def pop[B >: A]: (A, Repr[B])
   }
 
   trait Poppable[+A] extends PoppableLike[A, Poppable]
@@ -44,7 +44,7 @@ package object coperque {
 
   private[coperque] trait EjectableLike[+A, +Repr[_] <: Ejectable[_]] {
     self: Repr[_] =>
-    def eject[B >: A]: Repr[B]
+    def eject[B >: A]: (A, Repr[B])
   }
 
   trait Ejectable[+A] extends EjectableLike[A, Ejectable]
